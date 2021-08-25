@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      corretto11
+       java: corretto8
       docker: 18
     commands:
       - apt-get -y install moreutils # For using 'sponge' later
