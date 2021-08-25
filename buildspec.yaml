@@ -15,8 +15,6 @@ phases:
     commands:
       - $(aws ecr get-login --no-include-email --region $AWS_REGION) # Login to AWS ECR
       - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7) # Extracting first 7 characters of the commitID to use it as ImageTag
-      - systemctl start docker
-      - systemctl enable docker
       - docker build -t ecr-sample .
       - docker tag ecr-sample:latest 136884313584.dkr.ecr.ap-northeast-2.amazonaws.com/ecr-sample:latest
   post_build:
